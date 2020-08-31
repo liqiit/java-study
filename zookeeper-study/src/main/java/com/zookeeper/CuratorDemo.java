@@ -43,9 +43,9 @@ public class CuratorDemo {
         acl.setId(new Id("digest", DigestAuthenticationProvider.generateDigest("admin:admin")));
         list.add(acl);
         curatorFramework.create()
-                .withMode(CreateMode.PERSISTENT)
-                .withACL(list)
-                .forPath("/data/auth", "test".getBytes());
+                .withMode(CreateMode.EPHEMERAL)
+                //.withACL(list)
+                .forPath("/activemq/auth", "test".getBytes());
     }
 
     private static void updateNode(CuratorFramework curatorFramework) throws Exception {
