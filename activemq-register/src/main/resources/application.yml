@@ -1,0 +1,10 @@
+
+server:
+  port: 9999
+
+zookeeper:
+  server: 127.0.0.1:2181
+  sessionTimeoutMs: 6000
+  connectionTimeoutMs: 6000
+  maxRetries: 6000
+  baseSleepTimeMs: 6000
