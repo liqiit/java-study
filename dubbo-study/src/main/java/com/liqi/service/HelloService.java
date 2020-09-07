@@ -1,5 +1,8 @@
 package com.liqi.service;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 /**
  * Title: HelloService
  * Description:
@@ -8,6 +11,6 @@ package com.liqi.service;
  * @author liqi
  * @date 2020/9/3
  */
-public interface HelloService {
-    String sayHello(String name);
+public interface HelloService extends Remote {
+    String sayHello(String name) throws RemoteException;
 }

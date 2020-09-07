@@ -6,6 +6,7 @@ import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.ServiceConfig;
 
+import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.CountDownLatch;
 
 /**
