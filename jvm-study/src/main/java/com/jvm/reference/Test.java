@@ -23,6 +23,10 @@ public class Test {
         // 当GC第二次发现虚引用，而此时JVM将phanRef插入到refQueue会插入失败，此时GC才会对obj进行回收
         Thread.sleep(200);
         System.out.println(refQueue.poll());
+        retry:
+        for(;;){
+            if (true)continue retry;
+        }
 
     }
 }

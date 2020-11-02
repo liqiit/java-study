@@ -3,7 +3,6 @@ package com.liqi.rmi;
 import com.liqi.service.HelloService;
 import com.liqi.service.impl.HelloServiceImpl;
 
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
