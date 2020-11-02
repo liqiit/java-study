@@ -1,5 +1,6 @@
 package com.liqi.pojo;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -15,5 +16,6 @@ import javax.annotation.Resource;
 @Component
 public class User {
     @Resource(name ="aa")
-    private Address address;
+    @Lazy
+    public Address address;
 }

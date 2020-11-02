@@ -1,5 +1,7 @@
 package com.liqi.pojo;
 
+import org.springframework.beans.factory.annotation.Value;
+
 /**
  * Title: Address
  * Description:
@@ -9,5 +11,5 @@ package com.liqi.pojo;
  * @date 2020/9/24
  */
 public class Address {
-    private String name;
+
 }
