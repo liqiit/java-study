@@ -1,10 +1,5 @@
 
 server:
   port: 8111
-spring:
-  application:
-    name: security-demo
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
+
 
