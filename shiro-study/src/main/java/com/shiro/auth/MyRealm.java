@@ -3,8 +3,10 @@ package com.shiro.auth;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +29,10 @@ public class MyRealm extends AuthorizingRealm {
         if (!username.equalsIgnoreCase("liqi")) {
             throw new UnknownAccountException("账户不存在");
         }
-        return new SimpleAuthenticationInfo(username, "123456", getName());
+        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(username, "91d33f11fb24e6a47b9255a85ae98c07", getName());
+        //md5加盐
+        simpleAuthenticationInfo.setCredentialsSalt(ByteSource.Util.bytes("liqi"));
+        return simpleAuthenticationInfo;
     }
 
     private Set<String>getRolesByUserName(String userName){
@@ -40,5 +45,10 @@ public class MyRealm extends AuthorizingRealm {
         Set<String>permissions=new HashSet<>();
         permissions.add("user:delete");
         return permissions;
+    }
+
+    public static void main(String[] args) {
+        Md5Hash md5Hash=new Md5Hash("123456","liqi");
+        System.out.println(md5Hash.toString());
     }
 }
