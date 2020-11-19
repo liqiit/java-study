@@ -23,6 +23,7 @@
         <module>jvm-study</module>
         <module>dubbo-study</module>
         <module>mapstruct-study</module>
+        <module>easypoi-study</module>
     </modules>
     <dependencyManagement>
         <dependencies>
