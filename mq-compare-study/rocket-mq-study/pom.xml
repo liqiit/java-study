@@ -11,5 +11,10 @@
 
     <artifactId>rocket-mq-study</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+        </dependency>
+    </dependencies>
 </project>
