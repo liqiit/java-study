@@ -3,14 +3,14 @@ package com.rabbitmq.demo.topic.fanout;
 import com.rabbitmq.client.*;
 
 /**
- * Title: RabbitMqSubscriber
+ * Title: ErrorInfoSubscriber
  * Description:
  * Company: iFree Group
  *
  * @author liqi
  * @date 2020/11/23
  */
-public class RabbitMqSubscriber {
+public class ErrorInfoSubscriber {
     private static final String EXCHANGE_NAME = "logs";
 
     public static void main(String[] argv) throws Exception {
@@ -21,7 +21,7 @@ public class RabbitMqSubscriber {
 
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
         String queueName = channel.queueDeclare().getQueue();
-        channel.queueBind(queueName, EXCHANGE_NAME, "");
+        channel.queueBind(queueName, EXCHANGE_NAME, "error");
 
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 

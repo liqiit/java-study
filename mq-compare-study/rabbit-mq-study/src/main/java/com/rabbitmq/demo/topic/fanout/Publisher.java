@@ -6,14 +6,14 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 /**
- * Title: RabbitMqPublisher
+ * Title: Publisher
  * Description: fanout类型exchange无法对消息进行条件约束，所有消费者都会收到消息
  * Company: iFree Group
  *
  * @author liqi
  * @date 2020/11/23
  */
-public class RabbitMqPublisher {
+public class Publisher {
     private static final String EXCHANGE_NAME = "logs";
 
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class RabbitMqPublisher {
             channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
             String message = "info: Hello World!";
 
-            channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes("UTF-8"));
+            channel.basicPublish(EXCHANGE_NAME, "error", null, message.getBytes("UTF-8"));
             System.out.println(" [x] Sent '" + message + "'");
         } catch (Exception e) {
             e.printStackTrace();
