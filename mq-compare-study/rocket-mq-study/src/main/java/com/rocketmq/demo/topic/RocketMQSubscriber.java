@@ -28,6 +28,7 @@ public class RocketMQSubscriber {
     public static void main(String[] args) throws Exception {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("example_group_name");
 
+        
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
 
         //set to broadcast mode
@@ -35,14 +36,9 @@ public class RocketMQSubscriber {
 
         consumer.subscribe("TopicTest", "TagA || TagC || TagD");
 
-        consumer.registerMessageListener(new MessageListenerConcurrently() {
-
-            @Override
-            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
-                                                            ConsumeConcurrentlyContext context) {
-                System.out.printf(Thread.currentThread().getName() + " Receive New Messages: " + msgs + "%n");
-                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
-            }
+        consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
+            System.out.printf(Thread.currentThread().getName() + " Receive New Messages: " + msgs + "%n");
+            return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
         });
 
         consumer.start();
