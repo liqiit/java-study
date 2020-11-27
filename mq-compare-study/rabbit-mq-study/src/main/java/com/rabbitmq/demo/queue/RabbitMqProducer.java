@@ -1,11 +1,14 @@
 package com.rabbitmq.demo.queue;
 
 
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -35,9 +38,16 @@ public class RabbitMqProducer {
         Channel channel ;
         try (Connection connection = connectionFactory.newConnection()) {
             channel = connection.createChannel();
+            //对queue设置ttl
+            Map<String, Object> params = new HashMap<>();
+            params.put("x-message-ttl", 60000);
             channel.queueDeclare(RABBITMQ_DEFAULT_QUEUE, false, false, false, null);
             String message = "hello world";
-            channel.basicPublish("", RABBITMQ_DEFAULT_QUEUE, null, message.getBytes());
+            //对某个消息设置ttl(time to live)
+            AMQP.BasicProperties properties = new AMQP.BasicProperties.Builder()
+                    .expiration("60000")
+                    .build();
+            channel.basicPublish("", RABBITMQ_DEFAULT_QUEUE, properties, message.getBytes());
             System.out.println("sending message [" + message + "]");
         } catch (TimeoutException e) {
             e.printStackTrace();
