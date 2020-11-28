@@ -24,7 +24,6 @@
         <module>dubbo-study</module>
         <module>mapstruct-study</module>
         <module>easypoi-study</module>
-        <module>mybatis-study</module>
     </modules>
     <dependencyManagement>
         <dependencies>
