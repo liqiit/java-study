@@ -1,17 +1,17 @@
-package com.rabbitmq.demo.topic.direct;
+package com.ifreegroup.simple.broadcast.fanout;
 
 import com.rabbitmq.client.*;
 
 /**
  * Title: SubscriberError
- * Description: 消费者通过bind key进行绑定，只关心routekey 与 bind key 完全匹配的消息
+ * Description: exchange类型为fanout的消费者忽略bindkey，接收所有发布的消息
  * Company: iFree Group
  *
  * @author liqi
- * @date 2020/11/25
+ * @date 2020/11/23
  */
 public class SubscriberError {
-    private static final String EXCHANGE_NAME = "directLogs";
+    private static final String EXCHANGE_NAME = "logs";
 
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
@@ -19,7 +19,7 @@ public class SubscriberError {
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
-        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, EXCHANGE_NAME, "error");
 

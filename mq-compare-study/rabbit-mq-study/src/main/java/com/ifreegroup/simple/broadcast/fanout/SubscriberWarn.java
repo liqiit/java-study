@@ -1,16 +1,16 @@
-package com.rabbitmq.demo.topic.fanout;
+package com.ifreegroup.simple.broadcast.fanout;
 
 import com.rabbitmq.client.*;
 
 /**
- * Title: ErrorInfoSubscriber
- * Description:
+ * Title: SubscriberError
+ * Description:exchange类型为fanout的消费者忽略bindkey，接收所有发布的消息
  * Company: iFree Group
  *
  * @author liqi
  * @date 2020/11/23
  */
-public class ErrorInfoSubscriber {
+public class SubscriberWarn {
     private static final String EXCHANGE_NAME = "logs";
 
     public static void main(String[] argv) throws Exception {
@@ -21,7 +21,7 @@ public class ErrorInfoSubscriber {
 
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
         String queueName = channel.queueDeclare().getQueue();
-        channel.queueBind(queueName, EXCHANGE_NAME, "error");
+        channel.queueBind(queueName, EXCHANGE_NAME, "warn");
 
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
