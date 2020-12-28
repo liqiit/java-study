@@ -24,6 +24,8 @@
         <module>dubbo-study</module>
         <module>mapstruct-study</module>
         <module>easypoi-study</module>
+        <module>mongodb-study</module>
+        <module>file-process-study</module>
     </modules>
     <dependencyManagement>
         <dependencies>
