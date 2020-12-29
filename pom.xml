@@ -26,6 +26,7 @@
         <module>easypoi-study</module>
         <module>mongodb-study</module>
         <module>file-process-study</module>
+        <module>nacos-demo</module>
     </modules>
     <dependencyManagement>
         <dependencies>
