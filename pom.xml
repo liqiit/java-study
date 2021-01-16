@@ -25,6 +25,7 @@
         <module>mapstruct-study</module>
         <module>easypoi-study</module>
         <module>datastruct-study</module>
+        <module>kafka-study</module>
     </modules>
     <dependencyManagement>
         <dependencies>
