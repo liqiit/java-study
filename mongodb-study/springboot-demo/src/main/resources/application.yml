@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://MogoDbUser:%40Mgxd!2i3rx6d5YI@192.168.1.182:27017,192.168.1.183:27017,192.168.1.184:27017/?authSource=mogos_db&readPreference=primaryPreferred
+      database: mogos_db
+#      host: 192.168.1.182
+#      port: 27017
+#      username: MogoDbUser
+#      password: '%40Mgxd!2i3rx6d5YI'
+  application:
+    name: mongodb-monitor
