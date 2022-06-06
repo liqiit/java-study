@@ -1,0 +1,2 @@
+random=com.spi.dubbo.RandomBalance
+round=com.spi.dubbo.RoundBalance

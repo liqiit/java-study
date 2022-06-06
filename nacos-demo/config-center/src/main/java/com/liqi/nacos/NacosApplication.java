@@ -18,13 +18,13 @@ import java.util.concurrent.TimeUnit;
 public class NacosApplication {
     public static void main(String[] args) throws InterruptedException {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(NacosApplication.class, args);
-        while(true) {
-            String userName = applicationContext.getEnvironment().getProperty("user.name");
-            String userAge = applicationContext.getEnvironment().getProperty("user.age");
-            //获取当前部署的环境
-            String currentEnv = applicationContext.getEnvironment().getProperty("current.env");
-            System.err.println("in "+currentEnv+" enviroment; "+"user name :" + userName + "; age: " + userAge);
-            TimeUnit.SECONDS.sleep(1);
-        }
+//        while(true) {
+//            String userName = applicationContext.getEnvironment().getProperty("spring.datasource.type");
+//            String userAge = applicationContext.getEnvironment().getProperty("spring.datasource.driver-class-name");
+//            //获取当前部署的环境
+//            String currentEnv = applicationContext.getEnvironment().getProperty("current.env");
+//            System.err.println("in "+currentEnv+" enviroment; "+"user name :" + userName + "; age: " + userAge);
+//            TimeUnit.SECONDS.sleep(1);
+//        }
     }
 }

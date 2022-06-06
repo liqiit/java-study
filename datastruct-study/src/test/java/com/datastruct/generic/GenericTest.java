@@ -1,5 +1,6 @@
 package com.datastruct.generic;
 
+import com.datastruct.custom.CacheUtil;
 import com.datastruct.custom.CustomArrayList;
 import com.datastruct.custom.CustomLinkedList;
 import org.junit.Test;
@@ -110,8 +111,18 @@ public class GenericTest {
         CustomLinkedList<String> list = new CustomLinkedList<>();
         list.add("a");
         list.add("b");
-
-
+    }
+    @Test
+    public void testTimeoutCache(){
+        try {
+            CacheUtil.setCache("hello","hello");
+            Object value = CacheUtil.getCache("hello");
+            Thread.sleep(100000);
+            value = CacheUtil.getCache("hello");
+            System.out.println(value);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

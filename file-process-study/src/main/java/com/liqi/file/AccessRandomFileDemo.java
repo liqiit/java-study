@@ -14,11 +14,11 @@ public class AccessRandomFileDemo {
             System.out.println(line);
             //increat();
         });
-        builder.withTreahdSize(100)
+        builder.withThreadSize(100)
                 .withCharset("gbk")
                 .withBufferSize(1024*1024);
         BigFileReader bigFileReader = builder.build();
         bigFileReader.start();
-        //bigFileReader.shutdown();
+        bigFileReader.shutdown();
     }
 }

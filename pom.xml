@@ -28,6 +28,8 @@
         <module>file-process-study</module>
         <module>nacos-demo</module>
         <module>spi-study</module>
+        <module>complier-study</module>
+        <module>mutiny-study</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -61,6 +63,13 @@
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
                 <version>${zookeeper-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.smallrye.reactive</groupId>
+                <artifactId>mutiny-bom</artifactId>
+                <version>1.4.0</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
