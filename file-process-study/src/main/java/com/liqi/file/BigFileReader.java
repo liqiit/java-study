@@ -176,7 +176,7 @@ public class BigFileReader {
             this.handle = handle;
         }
 
-        public Builder withTreahdSize(int size) {
+        public Builder withThreadSize(int size) {
             this.threadSize = size;
             return this;
         }
@@ -202,8 +202,7 @@ public class BigFileReader {
         private byte[] readBuff;
 
         /**
-         * @param start read position (include)
-         * @param end   the position read to(include)
+         * @param pair read position (include) and the position read to(include)
          */
         public SliceReaderTask(StartEndPair pair) {
             this.start = pair.start;

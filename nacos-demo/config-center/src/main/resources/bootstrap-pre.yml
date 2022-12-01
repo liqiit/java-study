@@ -4,7 +4,7 @@ spring:
       config:
         file-extension: yaml
         server-addr: 127.0.0.1:8848
-        namespace: 13e92a01-89a7-4860-9e80-66da956f1e0f
+        namespace: e32d708c-008d-475b-bd56-39e98061a100
         shared-configs:[0]:
           group:  database
           data-id: mysql.yaml
