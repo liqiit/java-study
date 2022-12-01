@@ -16,6 +16,8 @@ public class Demo {
             SqlSession sqlSession = sqlSessionFactory.openSession();
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             User user = userMapper.queryByName("liqi");
+
+
             System.out.println(user.getId());
         } catch (Exception e) {
             e.printStackTrace();

@@ -3,6 +3,7 @@ package com.liqi.nacos;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Indexed;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @author liqi
  * @date 2020/12/28
  */
+@Indexed
 @SpringBootApplication
 public class NacosApplication {
     public static void main(String[] args) throws InterruptedException {

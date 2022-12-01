@@ -27,6 +27,10 @@
         <module>mongodb-study</module>
         <module>file-process-study</module>
         <module>nacos-demo</module>
+        <module>design-mode</module>
+        <module>hadoop-study</module>
+        <module>java-rx-study</module>
+        <module>image-combiner</module>
     </modules>
     <dependencyManagement>
         <dependencies>

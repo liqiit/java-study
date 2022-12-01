@@ -2,17 +2,23 @@ package com.datastruct.generic;
 
 import com.datastruct.custom.CustomArrayList;
 import com.datastruct.custom.CustomLinkedList;
+import com.datastruct.custom.CustomStack;
+import com.datastruct.custom.CustomStackByArray;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class GenericTest {
     @Test
     public void testCovariantArray() {
+        ReentrantLock lock = new ReentrantLock(true);
+        lock.lock();
         Person[] people = new Employee[5];
         people[0] = new Student();
         people[1] = new Employee();
         System.out.println(people[0].getClass());
+        lock.unlock();
     }
 
     @Test
@@ -112,6 +118,104 @@ public class GenericTest {
         list.add("b");
 
 
+    }
+
+    @Test
+    public void testCustomStack() {
+        CustomStack stack = new CustomStack();
+        stack.push("a");
+        stack.push("b");
+        stack.push("c");
+        System.out.println(stack.pop());
+    }
+
+    @Test
+    public void testCustomStackByArray() throws Exception {
+        CustomStackByArray stack = new CustomStackByArray();
+        stack.push("a");
+        stack.push("b");
+        stack.push("c");
+        System.out.println(stack.pop());
+    }
+
+    @Test
+    public void testBalacnCompile() throws Exception {
+        CustomStack stack = new CustomStack();
+        String pushArray = "[({";
+        String popArray = "])}";
+        String testStr = "()[]{";
+        for (char c : testStr.toCharArray()) {
+            if (pushArray.contains(String.valueOf(c))) {
+                stack.push(c);
+            }
+            if (popArray.contains(String.valueOf(c))) {
+                if (stack.isEmpty()) {
+                    throw new Exception();
+                }
+                stack.pop();
+            }
+        }
+        if (!stack.isEmpty()) {
+            throw new Exception();
+        }
+    }
+
+    /***
+     * 后缀表达式计算
+     */
+    @Test
+    public void testMiddleSuffixCaculate() {
+        String str = "6523+8*+3+*";
+        String numberStr = "0123456789";
+        String operatorStr = "+-*/()";
+        CustomStack customStack = new CustomStack();
+        for (char c : str.toCharArray()) {
+            if (numberStr.contains(String.valueOf(c))) {
+                customStack.push(c);
+            }
+            if (operatorStr.contains(String.valueOf(c))) {
+                int num1 = Integer.valueOf(String.valueOf(customStack.pop()));
+                int num2 = Integer.valueOf(String.valueOf(customStack.pop()));
+                int result = 0;
+                if (String.valueOf(c).equals("+")) {
+                    result = num2 + num1;
+                } else if (String.valueOf(c).equals("-")) {
+                    result = num2 - num1;
+                } else if (String.valueOf(c).equals("*")) {
+                    result = num2 * num1;
+                } else if (String.valueOf(c).equals("/")) {
+                    result = num2 / num1;
+                }
+                customStack.push(result);
+            }
+        }
+        System.out.println(customStack.pop());
+    }
+
+    @Test
+    public void test() {
+        Map<String, String> map = new HashMap<>();
+
+        List<String> list1 = new ArrayList<>();
+        LinkedList<String> list = new LinkedList<>();
+
+        list.forEach(s -> {
+
+        });
+        list1.forEach(s -> {
+            map.put(s, s);
+        });
+        List<String> list2 = new ArrayList<>();
+        list2.forEach(s -> {
+            if (map.containsKey(s)) {
+                System.out.println("存在");
+            }
+        });
+
+
+        list1.forEach(s -> {
+
+        });
     }
 
 }
